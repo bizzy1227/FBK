@@ -11,7 +11,8 @@ const config = require('../config/db');
 
 router.post('/registration', (req, res) => {
   let newUser = new User({
-    name: req.body.name,
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
     email: req.body.email,
     login: req.body.login,
     password: req.body.password
@@ -58,9 +59,18 @@ router.post('/login', (req, res) => {
           // выдаем информацию о пользователе для вывода на экран
           user: {
             id: user._id,
-            name: user.name,
+            firstName: user.firstName,
+            lastName: user.lastName,
             login: user.login,
             email: user.email,
+            photo: user.photo,
+            aboutMe: user.aboutMe,
+            favorit: user.favorit,
+            subscriptions: user.subscriptions,
+            joined: user.joined,
+            city: user.city,
+            posts: user.posts,
+            site: user.site,
           }
         });
       } else {

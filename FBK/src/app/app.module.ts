@@ -19,10 +19,12 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { IsLoggedIn } from './isLogged.guard';
+import { UserEditComponent } from './user-edit/user-edit.component';
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'userProfile', component: UserProfileComponent, canActivate: [IsLoggedIn] },
+  { path: 'userProfile/userEdit', component: UserEditComponent, canActivate: [IsLoggedIn] },
   { path: 'registration',      component: RegistrationComponent },
   { path: 'login', component: LoginPageComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -38,15 +40,17 @@ const appRoutes: Routes = [
     RegistrationComponent,
     HeaderComponent,
     FooterComponent,
-    HomeComponent
+    HomeComponent,
+    UserEditComponent
   ],
   imports: [
-    RouterModule.forRoot(appRoutes),
+    RouterModule.forRoot(appRoutes, { enableTracing: false }),
     BrowserModule,
     HttpClientModule,
     FormsModule,
     HttpModule
   ],
+  exports: [RouterModule],
   providers: [
     RegistrationService,
     LoginServiceService,
@@ -55,4 +59,4 @@ const appRoutes: Routes = [
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {  }

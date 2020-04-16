@@ -7,6 +7,7 @@ const User = require('./models/user');
 const cors = require('cors');
 const config = require('./config/db');
 const account = require('./routes/account');
+const userProfile = require('./routes/userProfile');
 const passport = require('passport')
 
 // let corsOptions = {
@@ -25,6 +26,7 @@ app.use(bodyParser.urlencoded({ extended : false}));
 app.use(express.static(path.join(__dirname, 'public')));
 // routing account
 app.use('/account', account);
+app.use('/userProfile', userProfile);
 
 mongoose.connect(config.db);
 

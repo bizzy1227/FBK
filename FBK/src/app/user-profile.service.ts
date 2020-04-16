@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 
 @Injectable({
@@ -9,7 +9,7 @@ export class UserProfileService {
 
   user: any;
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   takeInfo(user) {
     this.user = user;
@@ -18,5 +18,15 @@ export class UserProfileService {
 
   getInfo() {
     return this.user;
+  }
+
+  saveChangeUser(user){
+    // позволяет отправить заголовки
+    let headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+    return this.http.post(
+      'http://localhost:3000/userProfile/userEdit',
+      user,
+      {headers: headers})
   }
 }

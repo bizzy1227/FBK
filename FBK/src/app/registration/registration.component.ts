@@ -9,7 +9,8 @@ import { RegistrationService } from '../registration.service';
 })
 export class RegistrationComponent implements OnInit {
 
-  name: String;
+  lastName: String;
+  firstName: String;
   login: String;
   email: String;
   password: String;
@@ -24,17 +25,21 @@ export class RegistrationComponent implements OnInit {
 
   userRegisterClick() {
     const user = {
-      name: this.name,
+      firstName: this.firstName,
+      lastName: this.lastName,
       login: this.login,
       email: this.email,
       password: this.password
     }
 
-    if(!this.reg.checkName(user.name)) {
+    if(!this.reg.checkFirstName(user.firstName)) {
       console.log('Имя не введено');
       return false;
+    } else if(!this.reg.checkLastName(user.lastName)) {
+      console.log('Фамилия не введена');
+      return false;
     } else if(!this.reg.checkLogin(user.login)) {
-      console.log('Логтн не введен');
+      console.log('Логин не введен');
       return false;
     } else if(!this.reg.checkEmail(user.email)) {
       console.log('Email не введен');

@@ -10,7 +10,15 @@ export class RegistrationService {
 
   constructor(private http: HttpClient) { }
   // validate part
-  checkName(name) {
+  checkFirstName(name) {
+    if(name == undefined) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  checkLastName(name) {
     if(name == undefined) {
       return false;
     } else {

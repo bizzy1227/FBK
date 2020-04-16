@@ -2,7 +2,10 @@
     <h2>Форма регистрации</h2>
     <form (submit)="userRegisterClick()">
         <label for="exampleInputEmail1">Имя</label>
-        <input [(ngModel)]="name" type="text" class="form-control" name="name">
+        <input [(ngModel)]="firstName" type="text" class="form-control" name="name">
+
+        <label for="exampleInputEmail1">Фамилия</label>
+        <input [(ngModel)]="lastName" type="text" class="form-control" name="name">
 
         <label for="exampleInputEmail1">Логин</label>
         <input [(ngModel)]="login" type="text" class="form-control" name="login">

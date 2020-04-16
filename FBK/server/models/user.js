@@ -4,7 +4,11 @@ const config = require('../config/db')
 
 // create a schema
 const userSchema = new mongoose.Schema({
-  name: {
+  lastName: {
+    type: String,
+    required: true
+  },
+  firstName: {
     type: String,
     required: true
   },
@@ -19,7 +23,58 @@ const userSchema = new mongoose.Schema({
   password: {
     type: String,
     required: true,
+  },
+  photo: {
+    type: String,
+    default: 'Information is not filled' },
+  aboutMe: {
+    type: String,
+    default: 'Information is not filled'
+  },
+  favorit: {
+    type: Array,
+    default: [
+      {
+        films: {
+          type: String,
+          default: 'Information is not filled'
+        }
+      },
+      {
+        music: {
+          type: String,
+          default: 'Information is not filled'
+        },
+      },
+      {
+        books: {
+          type: String,
+          default: 'Information is not filled'
+        },
+      }
+    ]
+  },
+  subscriptions: {
+    type: Array,
+    default: ['No one subscription']
+  },
+  joined: {
+    type: Date,
+    default: Date.now
+  },
+  city: {
+    type: String,
+    default: 'Information is not filled'
+  },
+  posts: {
+    type: Array,
+    default: ['No one post']
+  },
+  site: {
+    type: String,
+    default: 'Information is not filled'
   }
+
 }, { collection : 'users' });
 
 const User = module.exports = mongoose.model('User', userSchema);
@@ -49,3 +104,5 @@ module.exports.comparePass = function(passFromUser, userDBPass, cb) {
     cb(null, isMatch);
   });
 };
+
+

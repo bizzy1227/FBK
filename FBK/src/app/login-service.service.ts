@@ -46,6 +46,12 @@ export class LoginServiceService {
     this.user = user;
   }
 
+  storeUpdateUser(user) {
+    localStorage.removeItem('user');
+    localStorage.setItem('user', JSON.stringify(user));
+    this.user = user;
+  }
+
   logout() {
     this.token = null;
     this.user = null;
