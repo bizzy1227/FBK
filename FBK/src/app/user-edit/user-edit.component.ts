@@ -44,6 +44,7 @@ export class UserEditComponent implements OnInit {
     this.city = this.user.city;
     this.posts = this.user.posts;
     this.site = this.user.site;
+    this.joined = this.user.joined.slice(0, 10);
   }
 
   saveUserEditClick() {
